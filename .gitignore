@@ -1,0 +1,21 @@
+# Compilación y artefactos de salida
+out/
+bin/
+target/
+*.class
+
+# Entornos de desarrollo e IDEs
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+
+# Archivos de video originales (los audios del juego están procesados en audio/)
+*.mp4
+
+# Archivos temporales del sistema
+*.tmp
+.DS_Store
+Thumbs.db
