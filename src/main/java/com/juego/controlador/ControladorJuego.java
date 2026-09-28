@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 /**
- * Controlador de la arquitectura MVC.
- * Conecta el modelo de dominio con la vista gráfica, gestionando eventos y transiciones.
+ * Separa la pantalla del juego: la ventana no calcula el daño, se lo pide a esta clase,
+ * y esta clase usa Partida, Elemento y TablaEfectividad. Así la lógica no queda toda en un solo lado.
  */
 public class ControladorJuego {
 
@@ -35,6 +35,7 @@ public class ControladorJuego {
         this.vista.inicializar(this, this.tablaEfectividad);
     }
 
+    /** Arranca una partida nueva contra la IA elegida en el menú. */
     public void iniciarPartida(TipoIA tipoIA) {
         this.ultimoTipoIA = tipoIA;
         this.turnoEnProceso = false;
@@ -56,6 +57,7 @@ public class ControladorJuego {
         vista.setBotonAtacarHabilitado(true);
     }
 
+    /** El humano elige otra carta. Si la anterior seguía viva, el rival le pega al que entra. */
     public void seleccionarElementoHumano(Elemento elemento) {
         if (partida == null || partida.getEstado() != EstadoPartida.EN_CURSO || turnoEnProceso) {
             return;
@@ -122,6 +124,7 @@ public class ControladorJuego {
         }
     }
 
+    /** Ataque del turno: primero pega el humano y, un segundo y medio después, responde la IA. */
     public void ejecutarAtaqueRonda() {
         if (partida == null || partida.getEstado() != EstadoPartida.EN_CURSO || turnoEnProceso) {
             return;

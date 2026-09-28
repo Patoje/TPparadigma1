@@ -49,16 +49,9 @@ El juego incorpora una **interfaz gráfica 2D inspirada en los clásicos combate
 
 ## 🚀 Cómo Ejecutar el Proyecto
 
-### Opción A (Doble clic - Recomendada en Windows):
-* Hacé doble clic en el archivo `ejecutar_juego.bat`.
-* O ejecuta en la terminal:
-  ```bash
-  java -jar JuegoElemental.jar
-  ```
-
-### Opción B (Batería de Pruebas Unitarias):
-* Hacé doble clic en el archivo `ejecutar_tests.bat`.
-* Ejecuta 24 pruebas automatizadas que validan la reducción de vida, matriz de efectividad sin condicionales, comportamiento de las 3 IAs, penalizaciones de cambio y flujo de victoria.
+```bash
+java -jar JuegoElemental.jar
+```
 
 ---
 
@@ -67,8 +60,6 @@ El juego incorpora una **interfaz gráfica 2D inspirada en los clásicos combate
 ```
 TPParadigmas/
 ├── JuegoElemental.jar                  # JAR ejecutable listo para correr
-├── ejecutar_juego.bat                 # Lanzador de Windows
-├── ejecutar_tests.bat                 # Ejecutor de pruebas automatizadas
 ├── src/
 │   ├── main/
 │   │   ├── java/com/juego/
@@ -81,7 +72,4 @@ TPParadigmas/
 │   │   │   ├── vista/                  # VentanaPrincipal, BatallaPanel, CartasReservaPanel, DialogoCombatePanel, etc.
 │   │   │   └── Main.java               # Punto de entrada
 │   │   └── resources/sprites/          # Sprites pixel art (frente y espalda)
-│   └── test/java/com/juego/
-│       ├── PruebasDominioTest.java     # Suite de 24 tests unitarios
-│       └── VerificacionVisualTest.java # Smoke test de la interfaz
 ```

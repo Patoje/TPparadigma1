@@ -7,8 +7,9 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Clase base que representa a un participante (humano o máquina) en la partida.
- * Administra el conjunto de cartas/elementos asignados y el elemento activo.
+ * Herencia: esta es la clase padre. No se puede crear un Jugador suelto (es abstracta).
+ * JugadorHumano y JugadorMaquina heredan de acá el nombre, las cartas y la carta activa.
+ * Encapsulación: nombre, cartas y carta activa son private. Desde afuera solo se usan los métodos.
  */
 public abstract class Jugador {
     private final String nombre;

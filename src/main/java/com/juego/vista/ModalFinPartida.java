@@ -21,8 +21,8 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
 /**
- * Modal retro estilizado para la pantalla de Fin de Partida (Victoria / Derrota).
- * Ofrece las opciones de Revancha (misma dificultad) o Volver al Menú Principal.
+ * Ventana que aparece al terminar: dice si ganaste o perdiste,
+ * y deja jugar de nuevo o volver al menú.
  */
 public class ModalFinPartida extends JDialog {
 

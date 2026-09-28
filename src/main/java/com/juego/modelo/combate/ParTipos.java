@@ -4,8 +4,7 @@ import com.juego.modelo.elementos.TipoElemento;
 import java.util.Objects;
 
 /**
- * Representa una combinación inmutable de tipo atacante y tipo defensor.
- * Utilizada como clave en la matriz de efectividad, evitando estructuras condicionales (if/switch).
+ * Par atacante-defensor. Sirve de clave en la tabla de daño.
  */
 public record ParTipos(TipoElemento atacante, TipoElemento defensor) {
     public ParTipos {

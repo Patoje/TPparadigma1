@@ -5,17 +5,12 @@ import com.juego.modelo.elementos.Elemento;
 import java.util.List;
 
 /**
- * Patrón Strategy para los distintos comportamientos de Inteligencia Artificial.
+ * Abstracción: la interfaz dice QUÉ tiene que poder hacer una IA (elegir carta),
+ * pero no dice CÓMO. IAAleatoria, IAEstrategica y SuperIA la implementan cada una a su manera.
+ * Eso es polimorfismo: el jugador máquina llama seleccionarElemento y corre la versión que tenga guardada.
  */
 public interface EstrategiaIA {
-    /**
-     * Selecciona la carta/elemento más conveniente entre las disponibles.
-     *
-     * @param elementosDisponibles Lista de cartas vivas del jugador máquina.
-     * @param elementoRival Carta activa del rival (jugador humano).
-     * @param tabla Matriz de efectividad configurada.
-     * @return El elemento seleccionado para combatir.
-     */
+    /** Elige una carta viva para enfrentar a la del humano. */
     Elemento seleccionarElemento(List<Elemento> elementosDisponibles, Elemento elementoRival, TablaEfectividad tabla);
 
     String getNombre();

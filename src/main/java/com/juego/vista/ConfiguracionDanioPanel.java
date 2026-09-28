@@ -30,9 +30,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Pantalla de configuración interactiva con ambientación de Costa/Playa Tropical Retro:
- * - Mitad Superior: Cielo tropical, océano turquesa y olas pixel art.
- * - Mitad Inferior: Arena de playa dorada con conchas y las 9 tarjetas retro de daño.
+ * Pantalla para cambiar los porcentajes de daño antes de jugar.
+ * Esos números se guardan en la tabla y el combate los usa tal cual.
  */
 public class ConfiguracionDanioPanel extends JPanel {
 

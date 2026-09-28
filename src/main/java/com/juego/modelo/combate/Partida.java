@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Orquestador principal de la partida entre el Jugador Humano y la IA.
- * Aplica las reglas del TP: 5 elementos aleatorios al 100%, turnos y condición de victoria.
+ * Composición: la partida TIENE un humano, una máquina y una tabla de daño. No hereda de ellos.
+ * Reparte 5 cartas y lleva las rondas hasta que uno se queda sin cartas vivas.
  */
 public class Partida {
     public static final int ELEMENTOS_POR_JUGADOR = 5;
@@ -32,9 +32,7 @@ public class Partida {
         this.rondaActual = 0;
     }
 
-    /**
-     * Inicia una nueva partida generando 5 elementos aleatorios para cada jugador.
-     */
+    /** Reparte 5 cartas al azar y deja a la IA elegir su primera carta. */
     public void iniciar() {
         humano.asignarElementos(FabricaElementos.generarElementosAleatorios(ELEMENTOS_POR_JUGADOR, "HUM"));
         maquina.asignarElementos(FabricaElementos.generarElementosAleatorios(ELEMENTOS_POR_JUGADOR, "CPU"));
@@ -51,9 +49,8 @@ public class Partida {
     }
 
     /**
-     * Permite al jugador humano seleccionar o cambiar su elemento activo.
-     * Si el cambio es voluntario (el anterior sigue vivo), consume el turno y el rival
-     * ataca de inmediato a la criatura que entra.
+     * Cambia la carta del humano.
+     * Si la anterior seguía viva, el rival pega al que entra (el cambio gasta el turno).
      */
     public ResultadoCambio cambiarElementoHumano(Elemento nuevoElemento) {
         if (!humano.getElementos().contains(nuevoElemento)) {
@@ -112,11 +109,9 @@ public class Partida {
     }
 
     /**
-     * Ejecuta una ronda de combate según la mecánica del documento:
-     * 1. El elemento del humano ataca al elemento de la IA.
-     * 2. Si el de la IA cae (0%), la IA saca un reemplazo inmediato de su reserva y contraataca.
-     * 3. Si no cae, el de la IA contraataca al del humano.
-     * 4. Se comprueba si el humano cayó y si hay fin de partida.
+     * Una ronda: pega el humano, y si el rival sigue vivo, responde.
+     * Si el rival muere y le quedan cartas, saca otra para la próxima ronda.
+     * Si alguien se queda sin cartas vivas, termina la partida.
      */
     public ResultadoRonda ejecutarRonda() {
         if (estado != EstadoPartida.EN_CURSO) {

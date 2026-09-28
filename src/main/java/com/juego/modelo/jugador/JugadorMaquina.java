@@ -7,8 +7,10 @@ import com.juego.modelo.ia.TipoIA;
 import java.util.Objects;
 
 /**
- * Representa al jugador controlado por la Inteligencia Artificial.
- * Aplica el patrón Strategy para decidir sus acciones.
+ * Herencia: JugadorMaquina también ES un Jugador, así que tiene las mismas 5 cartas.
+ * Composición: además TIENE una EstrategiaIA. No hereda de la IA.
+ * Polimorfismo: estrategia puede ser aleatoria, estratégica o super, y decidirElemento
+ * llama al mismo método sin preguntar cuál es.
  */
 public class JugadorMaquina extends Jugador {
     private final TipoIA tipoIA;
@@ -17,6 +19,7 @@ public class JugadorMaquina extends Jugador {
     public JugadorMaquina(String nombre, TipoIA tipoIA) {
         super(nombre);
         this.tipoIA = Objects.requireNonNull(tipoIA, "El tipo de IA no puede ser nulo");
+        // Polimorfismo: crearEstrategia devuelve la IA que corresponda a este tipo.
         this.estrategia = tipoIA.crearEstrategia();
     }
 
@@ -26,9 +29,7 @@ public class JugadorMaquina extends Jugador {
         this.estrategia = Objects.requireNonNull(estrategiaCustom, "La estrategia no puede ser nula");
     }
 
-    /**
-     * Selecciona el elemento óptimo para combatir contra el rival según su estrategia.
-     */
+    /** Pide a la IA qué carta usar contra la carta activa del humano. */
     public Elemento decidirElemento(Elemento rival, TablaEfectividad tabla) {
         return estrategia.seleccionarElemento(getElementosVivos(), rival, tabla);
     }

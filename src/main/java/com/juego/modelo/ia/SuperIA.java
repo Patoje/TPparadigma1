@@ -6,11 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Super IA (Estrategia + Eficiencia):
- * Combina la búsqueda de ventaja neta con la optimización de recursos (eficiencia).
- * Si el rival tiene poca vida (ej. 20%), busca entre los elementos capaces de liquidarlo
- * en el turno (daño >= vida rival) aquel que reciba menor daño o sea más eficiente,
- * reservando cartas clave para rondas futuras.
+ * Polimorfismo: tercera forma de seleccionarElemento.
+ * Si puede matar al rival en este golpe, elige entre esas cartas la que menos daño reciba.
+ * Si no puede, elige como la estratégica.
  */
 public class SuperIA implements EstrategiaIA {
 

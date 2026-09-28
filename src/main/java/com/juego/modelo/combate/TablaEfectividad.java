@@ -7,10 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Matriz configurable de efectividad y daño entre tipos.
- * Cumple con la restricción de la cátedra:
- * - NO utiliza condicionales if/switch para resolver interacciones.
- * - Permite modificar las reglas de daño dinámicamente sin modificar la lógica principal.
+ * Encapsulación: el mapa de daños es private. Se cambia con configurarDanio y se lee con obtenerDanio.
+ * El combate no usa if ni switch de agua/tierra/fuego: busca el par atacante-defensor en este mapa.
  */
 public class TablaEfectividad {
     private final Map<ParTipos, Double> matrizDanio;
@@ -48,9 +46,7 @@ public class TablaEfectividad {
         configurarDanio(TipoElemento.FUEGO, TipoElemento.FUEGO, 15.0);
     }
 
-    /**
-     * Permite modificar el porcentaje de daño de un cruce entre tipos.
-     */
+    /** Cambia el daño de un cruce, por ejemplo agua contra fuego. */
     public void configurarDanio(TipoElemento atacante, TipoElemento defensor, double porcentaje) {
         if (porcentaje < 0) {
             throw new IllegalArgumentException("El porcentaje de daño no puede ser negativo.");
@@ -58,10 +54,7 @@ public class TablaEfectividad {
         matrizDanio.put(new ParTipos(atacante, defensor), porcentaje);
     }
 
-    /**
-     * Obtiene el daño que inflige el tipo atacante sobre el tipo defensor.
-     * Resuelto por consulta directa de tabla hash (O(1)), sin 'if' ni 'switch'.
-     */
+    /** Busca en la tabla cuánto daño hace el atacante al defensor. */
     public double obtenerDanio(TipoElemento atacante, TipoElemento defensor) {
         return matrizDanio.getOrDefault(new ParTipos(atacante, defensor), 20.0);
     }

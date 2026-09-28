@@ -5,9 +5,8 @@ import com.juego.modelo.elementos.Elemento;
 import java.util.List;
 
 /**
- * IA Estratégica:
- * Selecciona el elemento que le otorgue mayor ventaja neta frente al elemento del oponente
- * (maximizar daño infligido y minimizar el daño recibido).
+ * Polimorfismo: misma interfaz que la aleatoria, otra forma de elegir.
+ * Busca la carta que más daño haga y menos reciba. Si el humano usa agua, prefiere tierra.
  */
 public class IAEstrategica implements EstrategiaIA {
 

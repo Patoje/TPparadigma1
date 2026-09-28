@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * IA Aleatoria:
- * Selecciona un elemento al azar entre los disponibles,
- * sin tener en cuenta el elemento del oponente ni posibles ventajas o desventajas.
+ * Polimorfismo: implements EstrategiaIA. Esta versión de seleccionarElemento elige al azar.
  */
 public class IAAleatoria implements EstrategiaIA {
     private final Random random;

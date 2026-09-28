@@ -5,18 +5,13 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Fábrica para generar elementos aleatorios al iniciar la partida.
+ * No es una función suelta: es una clase. generarElementosAleatorios arma las cartas al azar
+ * cuando empieza la partida. Partida la usa, pero la regla de crear cartas no está dentro de Partida.
  */
 public class FabricaElementos {
     private static final Random RANDOM = new Random();
 
-    /**
-     * Genera una lista de N elementos con tipos aleatorios y 100% de vida.
-     *
-     * @param cantidad Cantidad de cartas a generar (por regla general, 5).
-     * @param prefijo Prefijo para identificar al poseedor (ej. "J1", "CPU").
-     * @return Lista de nuevos elementos.
-     */
+    /** Crea N cartas con tipo al azar y 100% de vida. El prefijo distingue las del humano y las de la IA. */
     public static List<Elemento> generarElementosAleatorios(int cantidad, String prefijo) {
         TipoElemento[] tipos = TipoElemento.values();
         List<Elemento> lista = new ArrayList<>();

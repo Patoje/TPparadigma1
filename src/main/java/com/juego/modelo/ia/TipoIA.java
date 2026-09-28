@@ -3,7 +3,9 @@ package com.juego.modelo.ia;
 import java.util.Random;
 
 /**
- * Enumeración de los tipos de Inteligencia Artificial disponibles.
+ * Cada valor del enum redefine crearEstrategia (herencia + polimorfismo).
+ * ALEATORIA crea una IAAleatoria, ESTRATEGICA una IAEstrategica y SUPER_IA una SuperIA.
+ * Así no hace falta un switch para decidir qué IA construir.
  */
 public enum TipoIA {
     ALEATORIA("IA Aleatoria") {

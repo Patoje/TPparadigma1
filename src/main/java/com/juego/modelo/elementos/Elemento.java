@@ -3,8 +3,8 @@ package com.juego.modelo.elementos;
 import java.util.Objects;
 
 /**
- * Representa una unidad o carta elemental en el juego.
- * Mantiene su energía (vida) y gestiona el daño recibido garantizando encapsulación.
+ * Encapsulación: id, nombre, tipo y vida son private.
+ * Nadie puede poner la vida en un número cualquiera. Solo baja con recibirDanio, y nunca pasa de 0.
  */
 public class Elemento {
     private final String id;
@@ -28,12 +28,7 @@ public class Elemento {
         this.vidaActual = vidaMaxima;
     }
 
-    /**
-     * Aplica daño a la unidad reduciendo su energía actual.
-     * La energía no puede descender por debajo de 0%.
-     *
-     * @param cantidad Cantidad de daño porcentual a descontar.
-     */
+    /** Resta vida. Si el golpe es más grande que la vida que queda, queda en 0. */
     public void recibirDanio(double cantidad) {
         if (cantidad <= 0) {
             return;
@@ -41,9 +36,7 @@ public class Elemento {
         this.vidaActual = Math.max(0.0, this.vidaActual - cantidad);
     }
 
-    /**
-     * Indica si el elemento conserva energía para continuar luchando.
-     */
+    /** Sigue en juego si todavía tiene vida. */
     public boolean estaVivo() {
         return this.vidaActual > 0.0001;
     }
